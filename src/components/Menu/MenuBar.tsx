@@ -12,7 +12,7 @@ import {
 } from '@tabler/icons-react';
 import { Code, Group } from '@mantine/core';
 import { MantineLogo } from '@mantinex/mantine-logo';
-import classes from './MenuBar.scss';
+import classes from './MenuBar.module.scss';
 
 const data = [
   { link: '', label: 'Notifications', icon: IconBellRinging },
