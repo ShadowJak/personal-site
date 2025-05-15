@@ -44,8 +44,8 @@ export const MenuBar = () => {
   ));
 
   return (
-    <nav className={classes.navbar}>
-      <div className={classes.navbarMain}>
+    <nav className={classes.menubar}>
+      <div className={classes.menubarMain}>
         <Group className={classes.header} justify="space-between">
           <MantineLogo size={28} />
           <Code fw={700}>v3.1.2</Code>
