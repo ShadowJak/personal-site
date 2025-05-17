@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import ReactECharts from "echarts-for-react";
 import type { ECharts, EChartsOption } from "echarts";
+import { fencePost } from "../../utils/utils";
 
 const stockData: { date: string; price: number }[] = Array.from(
     { length: 36 },
@@ -77,7 +78,7 @@ export const StockBrushChart = () => {
             {
                 type: "slider",
                 zoomOnMouseWheel: false,
-                start: 100 - (11 / 35) * 100,
+                start: fencePost(12, stockData.length),
                 end: 100,
                 xAxisIndex: 0,
                 filterMode: 'filter',
