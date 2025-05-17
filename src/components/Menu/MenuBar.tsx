@@ -46,7 +46,7 @@ export const MenuBar = () => {
   return (
     <nav className={classes.menubar}>
       <div className={classes.menubarMain}>
-        <Group className={classes.header} justify="space-between">
+        <Group className={classes.header} justify='space-between'>
           <MantineLogo size={28} />
           <Code fw={700}>v3.1.2</Code>
         </Group>
@@ -54,12 +54,12 @@ export const MenuBar = () => {
       </div>
 
       <div className={classes.footer}>
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+        <a href='#' className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Change account</span>
         </a>
 
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+        <a href='#' className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </a>
