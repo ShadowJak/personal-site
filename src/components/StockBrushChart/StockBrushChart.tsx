@@ -36,6 +36,18 @@ export const StockBrushChart = () => {
         tooltip: {
             trigger: "axis",
         },
+        grid: {
+            show: false,
+            zlevel: 0,
+            z: 0,
+            left: 40,               //Changed
+            top: 60,
+            right: 20,              //Changed
+            bottom: 60,
+            width: 'auto',
+            height: 'auto',
+            containLabel: false,
+        },
         xAxis: {
             type: "category",
             data: stockData.map((d) => d.date),
