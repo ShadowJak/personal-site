@@ -56,6 +56,7 @@ export const StockBrushChart = () => {
         yAxis: {
             type: "value",
             scale: false,
+            // max: 150, ///TODO: Make dynamic, but probably leave blank
         },
         series: [
             {
