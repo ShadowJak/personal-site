@@ -2,32 +2,33 @@ import { useEffect, useRef } from "react";
 import ReactECharts from "echarts-for-react";
 import type { ECharts, EChartsOption } from "echarts";
 
-const stockData = [
-    { date: "2025-01-01", price: 100 },
-    { date: "2025-01-02", price: 105 },
-    { date: "2025-01-03", price: 110 },
-    { date: "2025-01-04", price: 103 },
-    { date: "2025-01-05", price: 115 },
-    { date: "2025-01-06", price: 118 },
-    { date: "2025-01-07", price: 121 },
-];
+const stockData: { date: string; price: number }[] = Array.from(
+    { length: 36 },
+    (_, i) => {
+        const year = 2022 + Math.floor(i / 12);
+        const month = (i % 12) + 1;
+        const date = `${year}-${month.toString().padStart(2, "0")}`;
+        const price = 100 + Math.round(Math.random() * 50); // Random prices
+        return { date, price };
+    }
+);
 
 export const StockBrushChart = () => {
     const chartRef = useRef<ReactECharts | null>(null);
 
     useEffect(() => {
-        const echartsInstance = chartRef.current?.getEchartsInstance() as ECharts | undefined;
-        if (echartsInstance) {
-            echartsInstance.dispatchAction({
-                type: "takeGlobalCursor",
-                key: "brush",
-                brushOption: {
-                    brushType: "lineX",
-                    brushMode: "single",
-                    xAxisIndex: 0,
-                },
-            });
-        }
+        // const echartsInstance = chartRef.current?.getEchartsInstance() as ECharts | undefined;
+        // if (echartsInstance) {
+        //     echartsInstance.dispatchAction({
+        //         type: "takeGlobalCursor",
+        //         key: "brush",
+        //         brushOption: {
+        //             brushType: "lineX",
+        //             brushMode: "single",
+        //             xAxisIndex: 0,
+        //         },
+        //     });
+        // }
     }, []);
 
     const option: EChartsOption = {
@@ -37,9 +38,11 @@ export const StockBrushChart = () => {
         xAxis: {
             type: "category",
             data: stockData.map((d) => d.date),
+            boundaryGap: false,
         },
         yAxis: {
             type: "value",
+            scale: false,
         },
         series: [
             {
@@ -47,10 +50,13 @@ export const StockBrushChart = () => {
                 name: "Stock Price",
                 data: stockData.map((d) => d.price),
                 smooth: true,
+                // clip: true,
+                // progressive: 0,
                 lineStyle: {
                     width: 2,
                 },
                 areaStyle: {},
+                animation: false,
             },
         ],
         brush: {
@@ -59,14 +65,31 @@ export const StockBrushChart = () => {
             xAxisIndex: 0,
             brushMode: "single",
         },
-        // toolbox: {
-        //   feature: {
-        //     brush: {
-        //       type: ["lineX"],
-        //     },
-        //     restore: {},
-        //   },
-        // },
+        toolbox: {
+            feature: {
+                brush: {
+                    type: ["lineX"],
+                },
+                restore: {},
+            },
+        },
+        dataZoom: [
+            {
+                type: "slider",
+                zoomOnMouseWheel: false,
+                start: 100 - (11 / 35) * 100,
+                end: 100,
+                xAxisIndex: 0,
+                filterMode: 'filter',
+            },
+            {
+                type: "inside",
+                zoomOnMouseWheel: false,
+                start: 0,
+                end: 100,
+                xAxisIndex: 0,
+            },
+        ],
     };
 
     const onEvents = {

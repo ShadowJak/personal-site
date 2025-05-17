@@ -9,7 +9,7 @@ import '@mantine/core/styles.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MantineProvider defaultColorScheme='auto'>
+    <MantineProvider defaultColorScheme='dark'>
       <App />
     </MantineProvider>
   </StrictMode>,
