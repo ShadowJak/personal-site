@@ -16,6 +16,8 @@
     "@mantine/hooks": "^8.0.0",
     "@mantinex/mantine-logo": "^2.0.0",
     "@tabler/icons-react": "^3.31.0",
+    "echarts": "^5.6.0",
+    "echarts-for-react": "^3.0.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
