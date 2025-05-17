@@ -10,7 +10,7 @@
 export const fencePost = (
     shownPosts: number,
     totalPosts: number,
-    position: 'start' | 'end' = 'end'
+    position: 'beginning' | 'end' = 'end'
 ): number => {
     let val;
     const ratio = (shownPosts - 1) / (totalPosts - 1);
