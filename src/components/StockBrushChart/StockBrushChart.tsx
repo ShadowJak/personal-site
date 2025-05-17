@@ -1,74 +1,90 @@
-import React, { useRef } from "react";
+import { useEffect, useRef } from "react";
 import ReactECharts from "echarts-for-react";
-import type { EChartsOption } from "echarts";
+import type { ECharts, EChartsOption } from "echarts";
 
-const stockData: [string, number][] = [
-  ["2025-01-01", 100],
-  ["2025-01-02", 105],
-  ["2025-01-03", 110],
-  ["2025-01-04", 103],
-  ["2025-01-05", 115],
-  ["2025-01-06", 118],
-  ["2025-01-07", 121],
+const stockData = [
+    { date: "2025-01-01", price: 100 },
+    { date: "2025-01-02", price: 105 },
+    { date: "2025-01-03", price: 110 },
+    { date: "2025-01-04", price: 103 },
+    { date: "2025-01-05", price: 115 },
+    { date: "2025-01-06", price: 118 },
+    { date: "2025-01-07", price: 121 },
 ];
 
-export function StockBrushChart(): React.ReactElement {
-  const chartRef = useRef<ReactECharts | null>(null);
+export const StockBrushChart = () => {
+    const chartRef = useRef<ReactECharts | null>(null);
 
-  const option: EChartsOption = {
-    tooltip: {
-      trigger: "axis",
-    },
-    xAxis: {
-      type: "category",
-      data: stockData.map(([date]) => date),
-    },
-    yAxis: {
-      type: "value",
-    },
-    series: [
-      {
-        type: "line",
-        name: "Stock Price",
-        data: stockData.map(([, price]) => price),
-        smooth: true,
-        lineStyle: {
-          width: 2,
+    useEffect(() => {
+        const echartsInstance = chartRef.current?.getEchartsInstance() as ECharts | undefined;
+        if (echartsInstance) {
+            echartsInstance.dispatchAction({
+                type: "takeGlobalCursor",
+                key: "brush",
+                brushOption: {
+                    brushType: "lineX",
+                    brushMode: "single",
+                    xAxisIndex: 0,
+                },
+            });
+        }
+    }, []);
+
+    const option: EChartsOption = {
+        tooltip: {
+            trigger: "axis",
         },
-        areaStyle: {},
-      },
-    ],
-    brush: {
-      toolbox: ["lineX"], // changed from 'rect' to 'lineX'
-      xAxisIndex: 0,
-      brushMode: "single",
-    },
-    toolbox: {
-      feature: {
+        xAxis: {
+            type: "category",
+            data: stockData.map((d) => d.date),
+        },
+        yAxis: {
+            type: "value",
+        },
+        series: [
+            {
+                type: "line",
+                name: "Stock Price",
+                data: stockData.map((d) => d.price),
+                smooth: true,
+                lineStyle: {
+                    width: 2,
+                },
+                areaStyle: {},
+            },
+        ],
         brush: {
-          type: ["lineX"], // changed from ['rect'] to ['lineX']
+            toolbox: ["lineX"],
+            // brushType: 'lineX',
+            xAxisIndex: 0,
+            brushMode: "single",
         },
-        restore: {},
-      },
-    },
-  };
+        // toolbox: {
+        //   feature: {
+        //     brush: {
+        //       type: ["lineX"],
+        //     },
+        //     restore: {},
+        //   },
+        // },
+    };
 
-  const onEvents = {
-    brushSelected: (params: {
-      batch: { selected: { dataIndex: number[] }[] }[];
-    }) => {
-      const indices = params.batch?.[0]?.selected?.[0]?.dataIndex ?? [];
-      const selectedData = indices.map((i) => stockData[i]);
-      console.log("Selected data:", selectedData);
-    },
-  };
+    const onEvents = {
+        brushSelected: (params: {
+            batch: { selected: { dataIndex: number[] }[] }[];
+        }) => {
+            const indices = params.batch?.[0]?.selected?.[0]?.dataIndex ?? [];
+            const selectedData = indices.map((i) => stockData[i]);
+            console.log("Selected data:", selectedData);
+        },
+    };
 
-  return (
-    <ReactECharts
-      ref={chartRef}
-      option={option}
-      style={{ height: "400px", width: "100%" }}
-      onEvents={onEvents}
-    />
-  );
+    return (
+        <ReactECharts
+            ref={chartRef}
+            option={option}
+            style={{ height: "400px", width: "100%" }}
+            onEvents={onEvents}
+        />
+    );
 }
