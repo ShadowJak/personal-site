@@ -47,7 +47,7 @@ export const MenuBar = () => {
     <nav className={classes.menubar}>
       <div className={classes.menubarMain}>
         <Group className={classes.header} justify='space-between'>
-          <div style={{ display: 'inline-flex', alignItems: 'center', width:'100%' }}>
+          <div className={classes.headerContents}>
             <MantineLogo size={28} style={{ marginRight: '2em' }} />
             <div style={{ flexGrow: 1 }} />
             <Code fw={700}>v3.1.2</Code>
