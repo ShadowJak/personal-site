@@ -42,7 +42,7 @@ export const StockBrushChart = () => {
             z: 0,
             left: 40,               //Changed
             top: 60,
-            right: 20,              //Changed
+            right: 30,              //Changed
             bottom: 60,
             width: 'auto',
             height: 'auto',
@@ -80,6 +80,7 @@ export const StockBrushChart = () => {
             brushMode: 'single',
         },
         toolbox: {
+            right: 30,
             feature: {
                 brush: {
                     type: ['lineX'],
