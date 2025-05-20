@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { ECharts, EChartsOption } from 'echarts';
 import { fencePost } from '../../utils/utils';
@@ -16,6 +16,35 @@ const stockData: { date: string; price: number }[] = Array.from(
 
 export const StockBrushChart = () => {
     const chartRef = useRef<ReactECharts | null>(null);
+    const gridWidthRef = useRef<number | null>(null);
+
+    const updateGridWidth = useCallback(() => {
+        const echartsInstance = chartRef.current?.getEchartsInstance();
+        if (echartsInstance) {
+            echartsInstance.resize(); // Ensure chart layout is updated
+
+            // Delay slightly to ensure layout stabilizes
+            setTimeout(() => {
+                try {
+                    const model = (echartsInstance as any).getModel();
+                    const gridComponent = model.getComponent('grid', 0);
+                    const coordSystem = gridComponent.coordinateSystem;
+                    const gridRect = coordSystem.getRect();
+                    gridWidthRef.current = gridRect.width;
+                    // console.log('Grid width (plot area):', gridRect.width);
+                } catch (err) {
+                    console.warn('Failed to get grid dimensions:', err);
+                }
+            }, 20);
+        }
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener('resize', updateGridWidth);
+        return () => {
+            window.removeEventListener('resize', updateGridWidth);
+        };
+    }, [updateGridWidth]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -25,36 +54,26 @@ export const StockBrushChart = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    useEffect(() => {
-        const echartsInstance = chartRef.current?.getEchartsInstance();
-
-        if (echartsInstance) {
-            // Bypass TS visibility restriction (ECharts does expose getModel at runtime)
-            const model = (echartsInstance as any).getModel();
-
-            const gridComponent = model.getComponent('grid', 0);
-            const coordSystem = gridComponent.coordinateSystem;
-            const gridRect = coordSystem.getRect();
-
-            const gridWidth = gridRect.width;
-            console.log('Grid (plot area) width in pixels:', gridWidth);
-
-            const totalWidth = chartRef.current?.getEchartsInstance().getWidth();
-            console.log('Total chart width in pixels:', totalWidth);
-        }
-
-    }, [])
+    const handleChartReady = (echartsInstance: ECharts) => {
+        setTimeout(() => {
+            updateGridWidth();
+        }, 100)
+        
+    };
 
     // Brush event handler
     const onBrushSelected = useCallback((params: any) => {
         params.batch.forEach((brushItem: any) => {
-            const coordRange = brushItem.areas?.[0]?.coordRange; // [startIndex, endIndex]
+            const coordRange = brushItem.areas?.[0]?.coordRange;
             console.log('brushItem', brushItem);
             if (coordRange && coordRange.length === 2) {
                 const [start, end] = coordRange;
                 // slice the selected points from your data
                 const selectedPoints = stockData.slice(start, end + 1);
                 console.log('Selected Points:', selectedPoints);
+                console.log('gridWidthRef.current', gridWidthRef.current);
+                ///TODO: Use gridwidthref.current with the 12-1 number cut in
+                /// half to get the current selected points behavior
             }
         });
     }, []);
@@ -134,6 +153,7 @@ export const StockBrushChart = () => {
     return (
         <ReactECharts
             ref={chartRef}
+            onChartReady={handleChartReady}
             option={option}
             style={{ height: '400px', width: '100%' }}
             onEvents={onEvents}
