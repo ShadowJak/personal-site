@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { ECharts, EChartsOption } from 'echarts';
 import { fencePost } from '../../utils/utils';
@@ -9,7 +9,7 @@ const stockData: { date: string; price: number }[] = Array.from(
         const year = 2022 + Math.floor(i / 12);
         const month = (i % 12) + 1;
         const date = `${year}-${month.toString().padStart(2, '0')}`;
-        const price = 100 + Math.round(Math.random() * 50); // Random prices
+        const price = 100 + Math.round(Math.random() * 50);
         return { date, price };
     }
 );
@@ -17,14 +17,46 @@ const stockData: { date: string; price: number }[] = Array.from(
 export const StockBrushChart = () => {
     const chartRef = useRef<ReactECharts | null>(null);
 
-    // The fact this is needed is really stupid.
     useEffect(() => {
         const handleResize = () => {
             chartRef.current?.getEchartsInstance().resize();
         };
-
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        const echartsInstance = chartRef.current?.getEchartsInstance();
+
+        if (echartsInstance) {
+            // Bypass TS visibility restriction (ECharts does expose getModel at runtime)
+            const model = (echartsInstance as any).getModel();
+
+            const gridComponent = model.getComponent('grid', 0);
+            const coordSystem = gridComponent.coordinateSystem;
+            const gridRect = coordSystem.getRect();
+
+            const gridWidth = gridRect.width;
+            console.log('Grid (plot area) width in pixels:', gridWidth);
+
+            const totalWidth = chartRef.current?.getEchartsInstance().getWidth();
+            console.log('Total chart width in pixels:', totalWidth);
+        }
+
+    }, [])
+
+    // Brush event handler
+    const onBrushSelected = useCallback((params: any) => {
+        params.batch.forEach((brushItem: any) => {
+            const coordRange = brushItem.areas?.[0]?.coordRange; // [startIndex, endIndex]
+            console.log('brushItem', brushItem);
+            if (coordRange && coordRange.length === 2) {
+                const [start, end] = coordRange;
+                // slice the selected points from your data
+                const selectedPoints = stockData.slice(start, end + 1);
+                console.log('Selected Points:', selectedPoints);
+            }
+        });
     }, []);
 
     const option: EChartsOption = {
@@ -33,14 +65,10 @@ export const StockBrushChart = () => {
         },
         grid: {
             show: false,
-            zlevel: 0,
-            z: 0,
             left: 40,
             top: 60,
             right: 30,
             bottom: 60,
-            width: 'auto',
-            height: 'auto',
             containLabel: false,
         },
         xAxis: {
@@ -51,7 +79,6 @@ export const StockBrushChart = () => {
         yAxis: {
             type: 'value',
             scale: false,
-            // max: 150, ///TODO: Make dynamic, but probably leave blank
         },
         series: [
             {
@@ -59,8 +86,6 @@ export const StockBrushChart = () => {
                 name: 'Stock Price',
                 data: stockData.map((d) => d.price),
                 smooth: true,
-                // clip: true,
-                // progressive: 0,
                 lineStyle: {
                     width: 2,
                 },
@@ -70,7 +95,6 @@ export const StockBrushChart = () => {
         ],
         brush: {
             toolbox: ['lineX'],
-            // brushType: 'lineX',
             xAxisIndex: 0,
             brushMode: 'single',
         },
@@ -102,16 +126,17 @@ export const StockBrushChart = () => {
         ],
     };
 
-    // const onEvents = {
-    //     brushSelected: debouncedBrushSelected,
-    // };
+    // Register the brushSelected event handler
+    const onEvents = {
+        brushSelected: onBrushSelected,
+    };
 
     return (
         <ReactECharts
             ref={chartRef}
             option={option}
             style={{ height: '400px', width: '100%' }}
-        // onEvents={onEvents}
+            onEvents={onEvents}
         />
     );
-}
+};
