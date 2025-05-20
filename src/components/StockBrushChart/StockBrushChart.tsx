@@ -17,19 +17,14 @@ const stockData: { date: string; price: number }[] = Array.from(
 export const StockBrushChart = () => {
     const chartRef = useRef<ReactECharts | null>(null);
 
+    // The fact this is needed is really stupid.
     useEffect(() => {
-        // const echartsInstance = chartRef.current?.getEchartsInstance() as ECharts | undefined;
-        // if (echartsInstance) {
-        //     echartsInstance.dispatchAction({
-        //         type: 'takeGlobalCursor',
-        //         key: 'brush',
-        //         brushOption: {
-        //             brushType: 'lineX',
-        //             brushMode: 'single',
-        //             xAxisIndex: 0,
-        //         },
-        //     });
-        // }
+        const handleResize = () => {
+            chartRef.current?.getEchartsInstance().resize();
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     const option: EChartsOption = {
@@ -40,9 +35,9 @@ export const StockBrushChart = () => {
             show: false,
             zlevel: 0,
             z: 0,
-            left: 40,               //Changed
+            left: 40,
             top: 60,
-            right: 30,              //Changed
+            right: 30,
             bottom: 60,
             width: 'auto',
             height: 'auto',
@@ -107,22 +102,16 @@ export const StockBrushChart = () => {
         ],
     };
 
-    const onEvents = {
-        brushSelected: (params: {
-            batch: { selected: { dataIndex: number[] }[] }[];
-        }) => {
-            const indices = params.batch?.[0]?.selected?.[0]?.dataIndex ?? [];
-            const selectedData = indices.map((i) => stockData[i]);
-            console.log('Selected data:', selectedData);
-        },
-    };
+    // const onEvents = {
+    //     brushSelected: debouncedBrushSelected,
+    // };
 
     return (
         <ReactECharts
             ref={chartRef}
             option={option}
             style={{ height: '400px', width: '100%' }}
-            onEvents={onEvents}
+        // onEvents={onEvents}
         />
     );
 }
