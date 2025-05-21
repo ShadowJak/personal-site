@@ -6,7 +6,7 @@ export const sections = [
     {name: 'Myself', path: '/myself'},
 ]
 
-export const Timespan = {
+export const TimespanInMonths = {
     MONTH: 1,
     QUARTER: 3,
     HALF: 6,

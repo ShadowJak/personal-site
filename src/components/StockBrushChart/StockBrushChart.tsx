@@ -2,7 +2,7 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { ECharts, EChartsOption } from 'echarts';
 import { fencePost } from '../../utils/utils';
-import { Timespan } from '../../utils/consts';
+import { TimespanInMonths } from '../../utils/consts';
 
 const stockData: { date: string; price: number }[] = Array.from(
     { length: 36 },
@@ -15,7 +15,7 @@ const stockData: { date: string; price: number }[] = Array.from(
     }
 );
 
-let timespan = Timespan.YEAR;
+let timespan = TimespanInMonths.YEAR;
 
 export const StockBrushChart = () => {
     const chartRef = useRef<ReactECharts | null>(null);
