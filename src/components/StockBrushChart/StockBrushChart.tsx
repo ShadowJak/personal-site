@@ -34,7 +34,6 @@ export const StockBrushChart = () => {
                     const coordSystem = gridComponent.coordinateSystem;
                     const gridRect = coordSystem.getRect();
                     gridWidthRef.current = gridRect.width;
-                    // console.log('Grid width (plot area):', gridRect.width);
                 } catch (err) {
                     console.warn('Failed to get grid dimensions:', err);
                 }
@@ -61,30 +60,19 @@ export const StockBrushChart = () => {
         setTimeout(() => {
             updateGridWidth();
         }, 100)
-        
+
     };
 
     // Brush event handler
     const onBrushSelected = useCallback((params: any) => {
         params.batch.forEach((brushItem: any) => {
             const coordRange = brushItem.areas?.[0]?.coordRange;
-            console.log('brushItem', brushItem);
             if (coordRange && coordRange.length === 2) {
                 const [start, end] = coordRange;
-                // slice the selected points from your data
                 const selectedPoints = stockData.slice(start, end + 1);
-                console.log('Selected Points:', selectedPoints);
-                // console.log('gridWidthRef.current', gridWidthRef.current);
-                // const toPixel = chartRef.current?.getEchartsInstance().convertToPixel({ xAxisIndex: 0 }, selectedPoints[0].date);
-                // const fromPixel = chartRef.current?.getEchartsInstance().convertFromPixel({ xAxisIndex: 0 }, brushItem.areas?.[0]?.range?.[0])
-                // console.log('toPixel', toPixel);
-                // console.log('fromPixel', fromPixel);
-                // console.log('the pixel from', brushItem.areas?.[0]?.range?.[0])
-                ///TODO: Use gridwidthref.current with the 12-1 number cut in
-                /// half to get the current selected points behavior
 
                 const firstDate = selectedPoints[0].date;
-                const lastDate = selectedPoints[selectedPoints.length-1].date;
+                const lastDate = selectedPoints[selectedPoints.length - 1].date;
 
                 const firstPixel = chartRef.current?.getEchartsInstance().convertToPixel({ xAxisIndex: 0 }, firstDate);
                 const lastPixel = chartRef.current?.getEchartsInstance().convertToPixel({ xAxisIndex: 0 }, lastDate);
@@ -101,8 +89,6 @@ export const StockBrushChart = () => {
                 }
 
                 console.log('post process selectedPoints', selectedPoints)
-
-
 
             }
         });

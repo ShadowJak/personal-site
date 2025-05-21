@@ -24,6 +24,13 @@ export const fencePost = (
     return val;
 }
 
+/**
+ * Calculates the interval width between data points for a chart, adjusted by subtracting 1.
+ *
+ * @param posts - The total number of data points (posts) to be displayed on the chart.
+ * @param chartWidth - The total width of the chart in pixels or units.
+ * @returns The computed interval width between each data point, minus 1 unit.
+ */
 export const halfInterval = (posts: number, chartWidth: number) => {
     return (chartWidth/(posts - 1)) - 1;
 }
