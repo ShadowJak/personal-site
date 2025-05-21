@@ -2,6 +2,7 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { ECharts, EChartsOption } from 'echarts';
 import { fencePost } from '../../utils/utils';
+import { Timespan } from '../../utils/consts';
 
 const stockData: { date: string; price: number }[] = Array.from(
     { length: 36 },
@@ -13,6 +14,8 @@ const stockData: { date: string; price: number }[] = Array.from(
         return { date, price };
     }
 );
+
+let timespan = Timespan.YEAR;
 
 export const StockBrushChart = () => {
     const chartRef = useRef<ReactECharts | null>(null);
@@ -71,9 +74,36 @@ export const StockBrushChart = () => {
                 // slice the selected points from your data
                 const selectedPoints = stockData.slice(start, end + 1);
                 console.log('Selected Points:', selectedPoints);
-                console.log('gridWidthRef.current', gridWidthRef.current);
+                // console.log('gridWidthRef.current', gridWidthRef.current);
+                // const toPixel = chartRef.current?.getEchartsInstance().convertToPixel({ xAxisIndex: 0 }, selectedPoints[0].date);
+                // const fromPixel = chartRef.current?.getEchartsInstance().convertFromPixel({ xAxisIndex: 0 }, brushItem.areas?.[0]?.range?.[0])
+                // console.log('toPixel', toPixel);
+                // console.log('fromPixel', fromPixel);
+                // console.log('the pixel from', brushItem.areas?.[0]?.range?.[0])
                 ///TODO: Use gridwidthref.current with the 12-1 number cut in
                 /// half to get the current selected points behavior
+
+                const firstDate = selectedPoints[0].date;
+                const lastDate = selectedPoints[selectedPoints.length-1].date;
+
+                const firstPixel = chartRef.current?.getEchartsInstance().convertToPixel({ xAxisIndex: 0 }, firstDate);
+                const lastPixel = chartRef.current?.getEchartsInstance().convertToPixel({ xAxisIndex: 0 }, lastDate);
+
+                const brushStart = brushItem.areas?.[0]?.range?.[0];
+                const brushEnd = brushItem.areas?.[0]?.range?.[1];
+
+                if (firstPixel && (firstPixel < brushStart)) {
+                    selectedPoints.shift();
+                }
+
+                if (lastPixel && (lastPixel > brushEnd)) {
+                    selectedPoints.pop();
+                }
+
+                console.log('post process selectedPoints', selectedPoints)
+
+
+
             }
         });
     }, []);
@@ -130,7 +160,7 @@ export const StockBrushChart = () => {
             {
                 type: 'slider',
                 zoomOnMouseWheel: false,
-                start: fencePost(12, stockData.length),
+                start: fencePost(timespan, stockData.length),
                 end: 100,
                 xAxisIndex: 0,
                 filterMode: 'filter',

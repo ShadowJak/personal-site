@@ -23,3 +23,7 @@ export const fencePost = (
 
     return val;
 }
+
+export const halfInterval = (posts: number, chartWidth: number) => {
+    return (chartWidth/(posts - 1)) - 1;
+}

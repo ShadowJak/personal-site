@@ -5,3 +5,10 @@ export const sections = [
     {name: 'Finance', path: '/finance'},
     {name: 'Myself', path: '/myself'},
 ]
+
+export const Timespan = {
+    MONTH: 1,
+    QUARTER: 3,
+    HALF: 6,
+    YEAR: 12,
+} as const;
