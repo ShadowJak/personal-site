@@ -1,10 +1,12 @@
+@import '../../mixin';
+
 .menubar {
   height: 100%;
-  // min-width: 20%;
   padding: var(--mantine-spacing-md);
   display: flex;
   flex-direction: column;
-  border-right: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  background-color: $medium-bg-color;
+  border-right: 1px solid $border-color;
 }
 
 .menubarMain {
@@ -14,7 +16,7 @@
 .header {
   padding-bottom: var(--mantine-spacing-md);
   margin-bottom: calc(var(--mantine-spacing-md) * 1.5);
-  border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  border-bottom: 1px solid $border-color;
 }
 
 .headerContents {
@@ -26,7 +28,7 @@
 .footer {
   padding-top: var(--mantine-spacing-md);
   margin-top: var(--mantine-spacing-md);
-  border-top: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  border-top: 1px solid $border-color;
 }
 
 .link {
@@ -34,17 +36,17 @@
   align-items: center;
   text-decoration: none;
   font-size: var(--mantine-font-size-sm);
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-1));
+  color: $link-color;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
   border-radius: var(--mantine-radius-sm);
   font-weight: 500;
 
   &:hover {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    background-color: $link-hover-bg-color;
+    color: $link-hover-color;
 
     .linkIcon {
-      color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+      color: $link-hover-color;
     }
   }
 
@@ -52,18 +54,18 @@
 
     &,
     &:hover {
-      background-color: var(--mantine-color-blue-light);
-      color: var(--mantine-color-blue-light-color);
+      background-color: $data-active-bg-color;
+      color: $data-active-color;
 
       .linkIcon {
-        color: var(--mantine-color-blue-light-color);
+        color: $data-active-color;
       }
     }
   }
 }
 
 .linkIcon {
-  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-2));
+  color: $link-icon-color;
   margin-right: var(--mantine-spacing-sm);
   width: 25px;
   height: 25px;
