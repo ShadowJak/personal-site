@@ -1,10 +1,10 @@
 /**
  * Calculates the percentage position of a post within a range of posts,
- * based on the specified position ('start' or 'end').
+ * based on the specified position ('beginning' or 'end').
  *
  * @param shownPosts - The number of posts to be shown.
  * @param totalPosts - The total number of posts available.
- * @param position - The position to calculate from, either 'start' or 'end'. Defaults to 'start'.
+ * @param position - The position to calculate from, either 'beginning' or 'end'. Defaults to 'end'.
  * @returns The calculated percentage position as a number.
  */
 export const fencePost = (
