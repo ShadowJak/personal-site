@@ -57,15 +57,15 @@ export const MenuBar = () => {
       </div>
 
       <div className={classes.footer}>
-        <button type="button" className={classes.link} onClick={(event) => event.preventDefault()}>
+        <a href='#' type="button" className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Change account</span>
-        </button>
+        </a>
 
-        <button type="button" className={classes.link} onClick={(event) => event.preventDefault()}>
+        <a href='#' type="button" className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
-        </button>
+        </a>
       </div>
     </nav>
   );
