@@ -42,19 +42,15 @@ export const StockBrushChart = () => {
     }, []);
 
     useEffect(() => {
-        window.addEventListener('resize', updateGridWidth);
-        return () => {
-            window.removeEventListener('resize', updateGridWidth);
-        };
-    }, [updateGridWidth]);
-
-    useEffect(() => {
         const handleResize = () => {
+            updateGridWidth();
             chartRef.current?.getEchartsInstance().resize();
         };
         window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [updateGridWidth]);
 
     const handleChartReady = (echartsInstance: ECharts) => {
         setTimeout(() => {
