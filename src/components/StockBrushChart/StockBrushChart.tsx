@@ -87,9 +87,6 @@ export const StockBrushChart = () => {
                 if (lastPixel && (lastPixel > brushEnd)) {
                     selectedPoints.pop();
                 }
-
-                console.log('post process selectedPoints', selectedPoints)
-
             }
         });
     }, []);
