@@ -1,0 +1,29 @@
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin full-viewport {
+    height: 100vh;
+    width: 100vw;
+}
+
+$dark-bg-color: var(--mantine-color-dark-9);
+$medium-bg-color: var(--mantine-color-dark-7);
+
+$link-hover-bg-color: var(--mantine-color-dark-6); // non-hover is likely medium-bg-color
+$link-hover-color: var(--mantine-color-white);
+$link-color: var(--mantine-color-dark-1);
+$link-icon-color: var(--mantine-color-dark-2);
+
+$border-color: var(--mantine-color-dark-4);
+
+$data-active-bg-color: var(--mantine-color-blue-light);
+$data-active-color: var(--mantine-color-blue-light-color);
+
