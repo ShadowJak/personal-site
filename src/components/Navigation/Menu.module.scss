@@ -1,0 +1,22 @@
+@use '../../mixin' as *;
+
+.navbarRoot {
+    padding: 0;
+}
+
+.navLinkParent,
+.navLinkChild {
+    font-weight: 500 !important;
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md) !important;
+
+    &:hover {
+        background-color: $dark-bg-color !important;
+        color: $link-hover-color;
+    }
+
+}
+
+.navLinkChild {
+    margin-left: var(--mantine-spacing-sm) !important;
+    border-left: 1px solid $border-color !important;
+}
