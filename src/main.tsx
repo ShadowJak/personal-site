@@ -5,10 +5,20 @@ import App from './App.tsx'
 import { MantineProvider } from '@mantine/core';
 
 import '@mantine/core/styles.css';
+import { cyanLime, electricIndigo, pumpkin } from './utils/consts.ts';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MantineProvider defaultColorScheme='dark'>
+    <MantineProvider
+      defaultColorScheme='light'
+      theme={{
+        colors: {
+          pumpkin,
+          electricIndigo,
+          cyanLime,
+        },
+        primaryColor: 'pumpkin',
+      }}>
       <App />
     </MantineProvider>
   </StrictMode>,

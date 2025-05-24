@@ -1,17 +1,29 @@
 @use '../../mixin' as *;
 
 .navbarRoot {
-    padding: 0;
+    padding: 0 !important;
+    background-color: $medium-bg-color !important;
 }
 
 .navLinkParent,
 .navLinkChild {
     font-weight: 500 !important;
     padding: var(--mantine-spacing-xs) var(--mantine-spacing-md) !important;
+    color: $link-color !important;
 
     &:hover {
         background-color: $dark-bg-color !important;
-        color: $link-hover-color;
+        color: $link-hover-color !important;
+    }
+
+    &[data-active] {
+
+        &,
+        &:hover {
+            background-color: $data-active-bg-color !important;
+            color: $data-active-color !important;
+        }
+
     }
 
 }

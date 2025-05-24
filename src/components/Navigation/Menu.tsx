@@ -5,9 +5,12 @@ import {
 } from '@tabler/icons-react';
 import './Menu.module.scss'
 import classes from './Menu.module.scss'
+import { useState } from 'react';
 
 
-export function NavbarNested() {
+export const NavbarNested = () => {
+  const [active, setActive] = useState('');
+
   return (
     <ScrollArea className={classes.navbarRoot} type="scroll" h="100%" w="220px">
       <Stack gap="0">
@@ -19,10 +22,28 @@ export function NavbarNested() {
         >
           <NavLink
             className={classes.navLinkChild}
-            label="Debunking TA" />
-            <NavLink
+            label="Debunking TA"
+            data-active={active === "Debunking TA" || undefined}
+            onClick={(event) => {
+              event.preventDefault();
+              if (active === "Debunking TA") {
+                setActive('');
+              } else {
+                setActive("Debunking TA");
+              }
+            }} />
+          <NavLink
             className={classes.navLinkChild}
-            label="Economics of AI" />
+            label="Economics of AI"
+            data-active={active === "Economics of AI" || undefined}
+            onClick={(event) => {
+              event.preventDefault();
+              if (active === "Economics of AI") {
+                setActive('');
+              } else {
+                setActive("Economics of AI");
+              }
+            }} />
         </NavLink>
 
         <NavLink
@@ -33,7 +54,16 @@ export function NavbarNested() {
         >
           <NavLink
             className={classes.navLinkChild}
-            label="Explaining LLMs" />
+            label="Explaining LLMs"
+            data-active={active === "Explaining LLMs" || undefined}
+            onClick={(event) => {
+              event.preventDefault();
+              if (active === "Explaining LLMs") {
+                setActive('');
+              } else {
+                setActive("Explaining LLMs");
+              }
+            }} />
         </NavLink>
       </Stack>
     </ScrollArea>
