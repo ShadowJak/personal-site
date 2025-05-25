@@ -117,7 +117,7 @@ export const StockBrushChart = () => {
                 smooth: true,
                 lineStyle: {
                     width: 2,
-                    color: chroma.mix(electricIndigo[5], '#000000', 0.6).hex(),
+                    color: chroma.mix(electricIndigo[5], '#000000', 0.0).hex(),
                 },
                 areaStyle: {
                     color: chroma.mix(electricIndigo[5], '#000000', 0.9).hex(),
@@ -147,6 +147,9 @@ export const StockBrushChart = () => {
             {
                 type: 'slider',
                 zoomOnMouseWheel: false,
+                brushSelect: false,
+                zoomLock: true, 
+                handleSize: 0,
                 start: fencePost(timespan, stockData.length),
                 end: 100,
                 xAxisIndex: 0,
