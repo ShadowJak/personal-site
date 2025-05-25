@@ -10,7 +10,7 @@ import { cyanLime, electricIndigo, pumpkin } from './utils/consts.ts';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <MantineProvider
-      defaultColorScheme='light'
+      defaultColorScheme='light' // Light is used to make sure all elements are manually styled
       theme={{
         colors: {
           pumpkin,

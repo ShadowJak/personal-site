@@ -1,4 +1,4 @@
-import { NavLink, ScrollArea, Stack } from '@mantine/core';
+import { Code, Group, NavLink, ScrollArea, Stack } from '@mantine/core';
 import {
   IconChartHistogram,
   IconCpu
@@ -6,6 +6,7 @@ import {
 import './Menu.module.scss'
 import classes from './Menu.module.scss'
 import { useState } from 'react';
+import { MantineLogo } from '@mantinex/mantine-logo';
 
 
 export const Menu = () => {
@@ -13,6 +14,13 @@ export const Menu = () => {
 
   return (
     <div className={classes.navContainer}>
+      <Group className={classes.navHeader} justify='space-between'>
+          <div className={classes.navHeaderContents}>
+            <MantineLogo size={28} style={{ marginRight: '2em', color: 'red' }} />
+            <div style={{ flexGrow: 1 }} />
+            <Code className={classes.navCode}fw={700}>v3.1.2</Code>
+          </div>
+        </Group>
       <ScrollArea className={classes.navRoot} type="scroll" h="100%" w="220px">
         <Stack gap="0" className={classes.navStack}>
           <NavLink

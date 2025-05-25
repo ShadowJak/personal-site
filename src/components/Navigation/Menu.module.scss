@@ -14,7 +14,18 @@
 }
 
 .navHeader {
-    
+    padding-bottom: var(--mantine-spacing-md);
+    margin-top: var(--mantine-spacing-md);
+    margin-left: var(--mantine-spacing-md);
+    margin-right: var(--mantine-spacing-md);
+    margin-bottom: calc(var(--mantine-spacing-md) * 1.5);
+    border-bottom: 1px solid $border-color;
+}
+
+.navHeaderContents {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
 }
 
 .navLinkParent,
@@ -56,4 +67,9 @@
     padding-top: var(--mantine-spacing-md);
     padding-bottom: var(--mantine-spacing-md);
     border-top: 1px solid $border-color;
+}
+
+.navCode {
+    background-color: $dark-bg-color !important;
+    color: $link-color;
 }
