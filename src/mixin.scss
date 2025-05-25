@@ -14,16 +14,19 @@
     width: 100vw;
 }
 
-$dark-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-9) 15%, black);
-$medium-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-9) 30%, black);
+$dark-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, black);
+$medium-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, black);
 
-$link-hover-bg-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 15%, transparent);
+// $dark-bg-color: var(--mantine-color-dark-9);
+// $medium-bg-color: var(--mantine-color-dark-9);
+
+$link-hover-bg-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 5%, transparent);
 $link-hover-color: var(--mantine-color-white);
-$link-color: var(--mantine-color-dark-1);
+$link-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 60%, black);
 $link-icon-color: var(--mantine-color-dark-2);
 
-$border-color: var(--mantine-color-dark-4);
+$border-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 25%, black);
 
-$data-active-bg-color: var(--mantine-color-blue-light);
-$data-active-color: var(--mantine-color-blue-light-color);
+$data-active-bg-color: var(--mantine-color-pumpkin-light);
+$data-active-color: var(--mantine-color-pumpkin-light-color);
 

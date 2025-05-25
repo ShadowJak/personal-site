@@ -16,7 +16,7 @@ export const Menu = () => {
     <div className={classes.navContainer}>
       <Group className={classes.navHeader} justify='space-between'>
           <div className={classes.navHeaderContents}>
-            <MantineLogo size={28} style={{ marginRight: '2em', color: 'red' }} />
+            <MantineLogo size={28} style={{ marginRight: '2em', color: 'var(--mantine-color-pumpkin-9)' }} />
             <div style={{ flexGrow: 1 }} />
             <Code className={classes.navCode}fw={700}>v3.1.2</Code>
           </div>
