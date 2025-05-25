@@ -15,18 +15,18 @@ export const Menu = () => {
   return (
     <div className={classes.navContainer}>
       <Group className={classes.navHeader} justify='space-between'>
-          <div className={classes.navHeaderContents}>
-            <MantineLogo size={28} style={{ marginRight: '2em', color: 'var(--mantine-color-pumpkin-9)' }} />
-            <div style={{ flexGrow: 1 }} />
-            <Code className={classes.navCode}fw={700}>v3.1.2</Code>
-          </div>
-        </Group>
+        <div className={classes.navHeaderContents}>
+          <MantineLogo size={28} style={{ marginRight: '2em', color: 'var(--mantine-color-pumpkin-9)' }} />
+          <div style={{ flexGrow: 1 }} />
+          <Code className={classes.navCode} fw={700}>v3.1.2</Code>
+        </div>
+      </Group>
       <ScrollArea className={classes.navRoot} type="scroll" h="100%" w="220px">
         <Stack gap="0" className={classes.navStack}>
           <NavLink
             className={classes.navLinkParent}
             label="Finance"
-            leftSection={<IconChartHistogram size={25} />}
+            leftSection={<IconChartHistogram className={classes.navLinkIcon} size={25} />}
             childrenOffset={12}
           >
             <NavLink
@@ -58,7 +58,7 @@ export const Menu = () => {
           <NavLink
             className={classes.navLinkParent}
             label="Technology"
-            leftSection={<IconCpu size={25} />}
+            leftSection={<IconCpu className={classes.navLinkIcon} size={25} />}
             childrenOffset={12}
           >
             <NavLink
@@ -80,7 +80,7 @@ export const Menu = () => {
         <NavLink
           className={classes.navLinkParent}
           label="Foot"
-          leftSection={<IconChartHistogram size={25} />}
+          leftSection={<IconChartHistogram className={classes.navLinkIcon} size={25} />}
         />
       </div>
     </div>

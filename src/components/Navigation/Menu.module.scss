@@ -58,6 +58,10 @@
     border-left: 1px solid $border-color !important;
 }
 
+.navLinkIcon {
+    color: $link-icon-color;
+}
+
 .navStack {
     flex: 1 1 auto;
     min-height: 0;

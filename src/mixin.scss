@@ -20,13 +20,13 @@ $medium-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, b
 // $dark-bg-color: var(--mantine-color-dark-9);
 // $medium-bg-color: var(--mantine-color-dark-9);
 
-$link-hover-bg-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 5%, transparent);
+$link-hover-bg-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 10%, transparent);
 $link-hover-color: var(--mantine-color-white);
 $link-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 60%, black);
-$link-icon-color: var(--mantine-color-dark-2);
+$link-icon-color: color-mix(in srgb, var(--mantine-color-cyanLime-3) 60%, black);
 
 $border-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 25%, black);
 
-$data-active-bg-color: var(--mantine-color-pumpkin-light);
-$data-active-color: var(--mantine-color-pumpkin-light-color);
+$data-active-bg-color: var(--mantine-color-cyanLime-light);
+$data-active-color: var(--mantine-color-cyanLime-light-color);
 

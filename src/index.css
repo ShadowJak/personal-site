@@ -13,9 +13,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  --mantine-color-pumpkin-light: rgba(255, 135, 54, 0.15);
-  --mantine-color-pumpkin-light-color: #ff7518; /*pumpkin 5*/
 }
 
 body {
