@@ -5,6 +5,7 @@
     flex-direction: column;
     height: 100vh;
     border-right: 1px solid $border-color;
+    background-color: $medium-bg-color;
 }
 
 .navRoot {
@@ -20,6 +21,7 @@
     margin-right: var(--mantine-spacing-md);
     margin-bottom: calc(var(--mantine-spacing-md) * 1.5);
     border-bottom: 1px solid $border-color;
+    // background-color: $medium-bg-color;
 }
 
 .navHeaderContents {
@@ -35,7 +37,7 @@
     color: $link-color !important;
 
     &:hover {
-        background-color: $dark-bg-color !important;
+        background-color: $link-hover-bg-color !important;
         color: $link-hover-color !important;
     }
 
@@ -67,6 +69,7 @@
     padding-top: var(--mantine-spacing-md);
     padding-bottom: var(--mantine-spacing-md);
     border-top: 1px solid $border-color;
+    // background-color: $medium-bg-color;
 }
 
 .navCode {
