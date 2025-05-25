@@ -2,7 +2,8 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { ECharts, EChartsOption } from 'echarts';
 import { fencePost } from '../../utils/utils';
-import { TimespanInMonths } from '../../utils/consts';
+import { electricIndigo, pumpkin, TimespanInMonths } from '../../utils/consts';
+import chroma from 'chroma-js';
 
 const stockData: { date: string; price: number }[] = Array.from(
     { length: 36 },
@@ -116,8 +117,19 @@ export const StockBrushChart = () => {
                 smooth: true,
                 lineStyle: {
                     width: 2,
+                    color: chroma.mix(electricIndigo[5], '#000000', 0.6).hex(),
+                    // color: 'red',
                 },
-                areaStyle: {},
+                areaStyle: {
+                    color: chroma.mix(electricIndigo[5], '#000000', 0.9).hex(),
+                    opacity: 0.5,
+                },
+                emphasis: {
+                    areaStyle: {
+                        color: chroma.mix(electricIndigo[5], '#000000', 0.9).hex(),
+                        opacity: 0.5,
+                    }
+                },
                 animation: false,
             },
         ],
