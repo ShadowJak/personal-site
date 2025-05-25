@@ -118,17 +118,13 @@ export const StockBrushChart = () => {
                 lineStyle: {
                     width: 2,
                     color: chroma.mix(electricIndigo[5], '#000000', 0.6).hex(),
-                    // color: 'red',
                 },
                 areaStyle: {
                     color: chroma.mix(electricIndigo[5], '#000000', 0.9).hex(),
                     opacity: 0.5,
                 },
                 emphasis: {
-                    areaStyle: {
-                        color: chroma.mix(electricIndigo[5], '#000000', 0.9).hex(),
-                        opacity: 0.5,
-                    }
+                    disabled: true,
                 },
                 animation: false,
             },
