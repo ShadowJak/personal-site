@@ -8,12 +8,12 @@ import classes from './Menu.module.scss'
 import { useState } from 'react';
 
 
-export const NavbarNested = () => {
+export const Menu = () => {
   const [active, setActive] = useState('');
 
   return (
-    <ScrollArea className={classes.navbarRoot} type="scroll" h="100%" w="220px">
-      <Stack gap="0">
+    <ScrollArea className={classes.navRoot} type="scroll" h="100%" w="220px">
+      <Stack gap="0" className={classes.navStack}>
         <NavLink
           className={classes.navLinkParent}
           label="Finance"

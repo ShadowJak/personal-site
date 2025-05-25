@@ -1,6 +1,7 @@
 @use '../../mixin' as *;
 
-.navbarRoot {
+.navRoot {
+    height: 100%;
     padding: 0 !important;
     background-color: $medium-bg-color !important;
 }
@@ -31,4 +32,8 @@
 .navLinkChild {
     margin-left: var(--mantine-spacing-sm) !important;
     border-left: 1px solid $border-color !important;
+}
+
+.navStack {
+    flex: 1;
 }
