@@ -17,6 +17,9 @@
 $dark-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, black);
 $medium-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, black);
 
+$content-bg-color-start: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 12%, black);
+$content-bg-color-end: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 1%, black);
+
 $link-hover-bg-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 10%, transparent);
 $link-hover-color: var(--mantine-color-white);
 $link-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 60%, black);

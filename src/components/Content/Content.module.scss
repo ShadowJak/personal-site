@@ -6,9 +6,11 @@
   height: 100vh;
   overflow-x: hidden;
 
-  background: radial-gradient(
-    circle at top left,
-    color-mix(in srgb, var(--mantine-color-electricIndigo-5) 10%, black),
-    color-mix(in srgb, var(--mantine-color-electricIndigo-5) 1%, black) 70%
-  );
+  // background: linear-gradient(135deg,
+  //     $content-bg-color-start,
+  //     $content-bg-color-end);
+
+  background: radial-gradient(circle at 30% 40%,
+      $content-bg-color-start,
+      black 80%);
 }

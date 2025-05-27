@@ -2,7 +2,7 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { ECharts, EChartsOption } from 'echarts';
 import { fencePost } from '../../utils/utils';
-import { electricIndigo, pumpkin, TimespanInMonths } from '../../utils/consts';
+import { cyanLime, electricIndigo, pumpkin, TimespanInMonths } from '../../utils/consts';
 import chroma from 'chroma-js';
 
 const stockData: { date: string; price: number }[] = Array.from(
@@ -15,6 +15,10 @@ const stockData: { date: string; price: number }[] = Array.from(
         return { date, price };
     }
 );
+
+const chartLineColor = cyanLime[5];
+const chartAreaColor = cyanLime[5];
+const chartItemColor = cyanLime[9];
 
 let timespan = TimespanInMonths.YEAR;
 
@@ -117,11 +121,14 @@ export const StockBrushChart = () => {
                 smooth: true,
                 lineStyle: {
                     width: 2,
-                    color: chroma.mix(electricIndigo[5], '#000000', 0.0).hex(),
+                    color: chroma.mix(chartLineColor, '#000000', 0.0).hex(),
                 },
                 areaStyle: {
-                    color: chroma.mix(electricIndigo[5], '#000000', 0.9).hex(),
+                    color: chroma.mix(chartAreaColor, '#000000', 0.9).hex(),
                     opacity: 0.5,
+                },
+                itemStyle: {
+                    color: chartItemColor,
                 },
                 emphasis: {
                     disabled: true,
@@ -148,7 +155,7 @@ export const StockBrushChart = () => {
                 type: 'slider',
                 zoomOnMouseWheel: false,
                 brushSelect: false,
-                zoomLock: true, 
+                zoomLock: true,
                 handleSize: 0,
                 start: fencePost(timespan, stockData.length),
                 end: 100,

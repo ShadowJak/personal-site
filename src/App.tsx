@@ -6,7 +6,7 @@ import { Menu } from './components/Navigation/Menu'
 function App() {
   return (
     <div className={classes.container}>
-      <MenuBar />
+      {/* <MenuBar /> */}
       <Menu />
       <Content />
     </div>
