@@ -2,10 +2,13 @@
 
 .content {
   flex-grow: 1;
-  background-color: $dark-bg-color;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+  @include flex-center;
   height: 100vh;
   overflow-x: hidden;
+
+  background: radial-gradient(
+    circle at top left,
+    color-mix(in srgb, var(--mantine-color-electricIndigo-5) 10%, black),
+    color-mix(in srgb, var(--mantine-color-electricIndigo-5) 1%, black) 70%
+  );
 }
