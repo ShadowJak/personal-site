@@ -14,19 +14,36 @@
     width: 100vw;
 }
 
-$dark-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, black);
-$medium-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, black);
+// $dark-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, black);
+// $medium-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, black);
 
-$content-bg-color-start: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 12%, black);
-$content-bg-color-end: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 1%, black);
+// $content-bg-color-start: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 12%, black);
+// $content-bg-color-end: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 1%, black);
 
-$link-hover-bg-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 10%, transparent);
-$link-hover-color: var(--mantine-color-white);
-$link-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 60%, black);
-$link-icon-color: color-mix(in srgb, var(--mantine-color-cyanLime-3) 60%, black);
+// $link-hover-bg-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 10%, transparent);
+// $link-hover-color: var(--mantine-color-white);
+// $link-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 60%, black);
+// $link-icon-color: color-mix(in srgb, var(--mantine-color-cyanLime-3) 60%, black);
 
-$border-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 25%, black);
+// $border-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 25%, black);
 
-$data-active-bg-color: var(--mantine-color-cyanLime-light);
-$data-active-color: var(--mantine-color-cyanLime-light-color);
+// $data-active-bg-color: var(--mantine-color-cyanLime-light);
+// $data-active-color: var(--mantine-color-cyanLime-light-color);
+
+$dark-bg-color: #121212; // Main background
+$medium-bg-color: #1e1e1e; // Panel/sidebar background
+
+$content-bg-color-start: #1e1e1e;
+$content-bg-color-end: #0d0d0d;
+
+$link-color: #d0d0d0; // Default text/link
+$link-hover-color: #ffffff; // On hover, sharp white
+$link-hover-bg-color: #2a2a2a; // Dark gray hover background
+$link-icon-color: #bbbbbb; // Slightly lighter gray for icons
+
+$border-color: #2f2f2f;
+
+$data-active-bg-color: #303030; // Slight highlight for active
+$data-active-color: #ffffff; // Text on active
+
 
