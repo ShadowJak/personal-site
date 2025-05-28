@@ -31,19 +31,19 @@
 // $data-active-color: var(--mantine-color-cyanLime-light-color);
 
 $dark-bg-color: #121212; // Main background
-$medium-bg-color: #1e1e1e; // Panel/sidebar background
+$medium-bg-color: #1e1e1e00; // Panel/sidebar background
 
-$content-bg-color-start: #1e1e1e;
-$content-bg-color-end: #0d0d0d;
+$content-bg-color-start: #000000;
+$content-bg-color-end: #060606;
 
 $link-color: #d0d0d0; // Default text/link
 $link-hover-color: #ffffff; // On hover, sharp white
-$link-hover-bg-color: #2a2a2a; // Dark gray hover background
+$link-hover-bg-color: #1a1a1a; // Dark gray hover background
 $link-icon-color: #bbbbbb; // Slightly lighter gray for icons
 
 $border-color: #2f2f2f;
 
-$data-active-bg-color: #303030; // Slight highlight for active
+$data-active-bg-color: #630000; // Slight highlight for active
 $data-active-color: #ffffff; // Text on active
 
 

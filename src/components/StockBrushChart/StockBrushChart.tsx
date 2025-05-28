@@ -11,14 +11,14 @@ const stockData: { date: string; price: number }[] = Array.from(
         const year = 2022 + Math.floor(i / 12);
         const month = (i % 12) + 1;
         const date = `${year}-${month.toString().padStart(2, '0')}`;
-        const price = 100 + Math.round(Math.random() * 50);
+        const price = 0 + Math.round(Math.random() * 150);
         return { date, price };
     }
 );
 
-const chartLineColor = cyanLime[5];
-const chartAreaColor = cyanLime[5];
-const chartItemColor = cyanLime[9];
+const chartLineColor = 'white';
+const chartAreaColor = 'red';
+const chartItemColor = 'white';
 
 let timespan = TimespanInMonths.YEAR;
 
@@ -124,7 +124,7 @@ export const StockBrushChart = () => {
                     color: chroma.mix(chartLineColor, '#000000', 0.0).hex(),
                 },
                 areaStyle: {
-                    color: chroma.mix(chartAreaColor, '#000000', 0.9).hex(),
+                    color: chroma.mix(chartAreaColor, '#000000', 0.4).hex(),
                     opacity: 0.5,
                 },
                 itemStyle: {
