@@ -1,6 +1,6 @@
 import classes from './App.module.scss'
 import { Content } from './components/Content/Content'
-import { ExpandNav } from './components/ExpandNav/ExpandNav'
+import { CircleNav } from './components/CircleNav/CircleNav'
 import { Menu } from './components/Navigation/Menu'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       {/* <MenuBar /> */}
       {/* <Menu /> */}
       <Content />
-      <ExpandNav />
+      <CircleNav />
     </div>
   )
 }

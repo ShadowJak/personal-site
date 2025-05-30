@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import classes from './ExpandNav.module.scss';
+import classes from './CircleNav.module.scss';
 
-export const ExpandNav = () => {
+export const CircleNav = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
