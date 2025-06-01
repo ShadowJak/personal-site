@@ -3,6 +3,7 @@ import ReactECharts from 'echarts-for-react';
 import type { ECharts, EChartsOption } from 'echarts';
 import { fencePost } from '../../utils/utils';
 import { TimespanInMonths } from '../../utils/consts';
+import chroma from 'chroma-js';
 
 const stockData: { date: string; price: number }[] = Array.from(
     { length: 36 },
@@ -10,10 +11,14 @@ const stockData: { date: string; price: number }[] = Array.from(
         const year = 2022 + Math.floor(i / 12);
         const month = (i % 12) + 1;
         const date = `${year}-${month.toString().padStart(2, '0')}`;
-        const price = 100 + Math.round(Math.random() * 50);
+        const price = 0 + Math.round(Math.random() * 150);
         return { date, price };
     }
 );
+
+const chartLineColor = 'white';
+const chartAreaColor = 'red';
+const chartItemColor = 'white';
 
 let timespan = TimespanInMonths.YEAR;
 
@@ -116,8 +121,18 @@ export const StockBrushChart = () => {
                 smooth: true,
                 lineStyle: {
                     width: 2,
+                    color: chroma.mix(chartLineColor, '#000000', 0.0).hex(),
                 },
-                areaStyle: {},
+                areaStyle: {
+                    color: chroma.mix(chartAreaColor, '#000000', 0.4).hex(),
+                    opacity: 0.5,
+                },
+                itemStyle: {
+                    color: chartItemColor,
+                },
+                emphasis: {
+                    disabled: true,
+                },
                 animation: false,
             },
         ],
@@ -139,6 +154,9 @@ export const StockBrushChart = () => {
             {
                 type: 'slider',
                 zoomOnMouseWheel: false,
+                brushSelect: false,
+                zoomLock: true,
+                handleSize: 0,
                 start: fencePost(timespan, stockData.length),
                 end: 100,
                 xAxisIndex: 0,
