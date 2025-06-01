@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 export const FullScreenNav = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [active, setActiveTab] = useState(0);
+    const [activeTab, setActiveTab] = useState(0);
 
     const handleClick = (tab: number) => {
+        console.log('activeTab', activeTab)
         if (isOpen) {
             setActiveTab(0);
             setIsOpen(false);
@@ -32,6 +33,7 @@ export const FullScreenNav = () => {
 
 
     const renderTabs = (tab: number) => {
+        // console.log('activeTab', activeTab)
         const leftOffset = (tab - 1) * 60 * -1;
 
         const blueBoxStyle: React.CSSProperties = {
@@ -43,7 +45,7 @@ export const FullScreenNav = () => {
             width: '150px',
             left: `${leftOffset}px`,
             zIndex: tab,
-            transform: isOpen ? 'translateX(-150px)' : 'translateX(0)',
+            transform: (isOpen && tab === activeTab) ? `translateX(${-150 + (60 * (tab-1))}px)` : (isOpen) ? 'translateX(-150px)' : 'translateX(0px)',
         };
 
         const pinkBoxStyle: React.CSSProperties = {
@@ -55,7 +57,7 @@ export const FullScreenNav = () => {
             width: '50px',
             left: `${leftOffset + 150}px`,
             zIndex: tab,
-            transform: isOpen ? 'translateX(-150px)' : 'translateX(0)',
+            transform: (isOpen && tab === activeTab) ? `translateX(${-150 + (60 * (tab-1))}px)` : (isOpen) ? 'translateX(-150px)' : 'translateX(0px)',
             cursor: 'pointer',
         };
 
