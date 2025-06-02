@@ -23,7 +23,7 @@ export const SlideMenu = () => {
                     <Code className={classes.navCode} fw={700}>v3.1.2</Code>
                 </div>
             </Group>
-            <ScrollArea className={classes.navRoot} type="scroll" h='100%' w='220px'>
+            <ScrollArea className={classes.navScrollArea} type="scroll" h='100%' w='220px'>
                 <Stack className={classes.navStack} gap='0'>
                     <NavLink
                         className={classes.navLinkParent}

@@ -4,6 +4,7 @@ import { Code, Group, NavLink, ScrollArea, Stack } from "@mantine/core";
 import { MantineLogo } from "@mantinex/mantine-logo";
 import { IconChartHistogram, IconCpu } from "@tabler/icons-react";
 import { SlideMenu } from "./SlideMenu/SlideMenu";
+import { Content } from "../Content/Content";
 
 
 export const SlideNav = () => {
@@ -16,5 +17,6 @@ export const SlideNav = () => {
 
     return (<>
         <SlideMenu />
+        <Content />
     </>)
 }
