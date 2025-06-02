@@ -5,6 +5,7 @@ import { MantineLogo } from "@mantinex/mantine-logo";
 import { IconChartHistogram, IconCpu } from "@tabler/icons-react";
 import { SlideMenu } from "./SlideMenu/SlideMenu";
 import { Content } from "../Content/Content";
+import { SlideSubMenu } from "./SlideMenu/SlideSubMenu";
 
 
 export const SlideNav = () => {
@@ -17,6 +18,8 @@ export const SlideNav = () => {
 
     return (<>
         <SlideMenu />
+        <SlideSubMenu category={'Finance'}/>
+        <SlideSubMenu category={'Technology'}/>
         <Content />
     </>)
 }
