@@ -1,0 +1,82 @@
+@use '../../../mixin' as *;
+
+.navContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    // border-right: 1px solid $border-color;
+    background-color: $medium-bg-color;
+}
+
+.navRoot {
+    height: 100vh;
+    padding: 0 !important;
+    background-color: $medium-bg-color !important;
+}
+
+.navHeader {
+    padding-bottom: var(--mantine-spacing-md);
+    margin-top: var(--mantine-spacing-md);
+    margin-left: var(--mantine-spacing-md);
+    margin-right: var(--mantine-spacing-md);
+    margin-bottom: calc(var(--mantine-spacing-md) * 1.5);
+    border-bottom: 1px solid $border-color;
+    // background-color: $medium-bg-color;
+}
+
+.navHeaderContents {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+}
+
+.navLinkParent,
+.navLinkChild {
+    font-weight: 500 !important;
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md) !important;
+    color: $link-color !important;
+
+    &:hover {
+        background-color: $link-hover-bg-color !important;
+        color: $link-hover-color !important;
+    }
+
+    &[data-active] {
+
+        &,
+        &:hover {
+            background-color: $data-active-bg-color !important;
+            color: $data-active-color !important;
+        }
+
+    }
+
+}
+
+.navLinkChild {
+    margin-left: var(--mantine-spacing-sm) !important;
+    border-left: 1px solid $border-color !important;
+}
+
+.navLinkIcon {
+    color: $link-icon-color;
+}
+
+.navStack {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.navFooter {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: var(--mantine-spacing-md);
+    padding-bottom: var(--mantine-spacing-md);
+    border-top: 1px solid $border-color;
+    // background-color: $medium-bg-color;
+}
+
+.navCode {
+    background-color: $dark-bg-color !important;
+    color: $link-color;
+}

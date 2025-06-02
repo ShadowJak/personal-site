@@ -3,7 +3,8 @@ import classes from './SlideNav.module.scss';
 import { Code, Group, NavLink, ScrollArea, Stack } from "@mantine/core";
 import { MantineLogo } from "@mantinex/mantine-logo";
 import { IconChartHistogram, IconCpu } from "@tabler/icons-react";
-import { SlideMenu } from "./SlideMenu";
+import { SlideMenu } from "./SlideMenu/SlideMenu";
+
 
 export const SlideNav = () => {
     const [isOpen, setIsOpen] = useState(false);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import classes from './SlideNav.module.scss';
+import classes from './SlideMenu.module.scss';
 import { Code, Group, NavLink, ScrollArea, Stack } from "@mantine/core";
 import { MantineLogo } from "@mantinex/mantine-logo";
 import { IconChartHistogram, IconCpu } from "@tabler/icons-react";
@@ -14,7 +14,7 @@ export const SlideMenu = () => {
 
     }
 
-    return (<>
+    return (
         <div className={classes.navContainer}>
             <Group className={classes.navHeader} justify='space-between'>
                 <div className={classes.navHeaderContents}>
@@ -47,5 +47,5 @@ export const SlideMenu = () => {
                 />
             </div>
         </div>
-    </>)
+    )
 }
