@@ -14,24 +14,15 @@
     width: 100vw;
 }
 
-// $dark-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, black);
-// $medium-bg-color: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 0%, black);
+@mixin absolute-left {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    transition: transform 0.3s ease;
+}
 
-// $content-bg-color-start: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 12%, black);
-// $content-bg-color-end: color-mix(in srgb, var(--mantine-color-electricIndigo-5) 1%, black);
-
-// $link-hover-bg-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 10%, transparent);
-// $link-hover-color: var(--mantine-color-white);
-// $link-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 60%, black);
-// $link-icon-color: color-mix(in srgb, var(--mantine-color-cyanLime-3) 60%, black);
-
-// $border-color: color-mix(in srgb, var(--mantine-color-pumpkin-5) 25%, black);
-
-// $data-active-bg-color: var(--mantine-color-cyanLime-light);
-// $data-active-color: var(--mantine-color-cyanLime-light-color);
-
-$dark-bg-color: #121212; // Main background
-$medium-bg-color: #1e1e1e; // Panel/sidebar background
+$dark-bg-color: #121212;
+$medium-bg-color: #1e1e1e;
 
 $content-bg-color-start: #800000;
 $content-bg-color-menu-end: #400000;

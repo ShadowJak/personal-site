@@ -4,15 +4,18 @@ import { Code, Group, NavLink, ScrollArea, Stack } from "@mantine/core";
 import { MantineLogo } from "@mantinex/mantine-logo";
 import { IconChartHistogram, IconCpu } from "@tabler/icons-react";
 
+interface iSlideMenuProps {
+    onClick: (tab: number) => void;
+}
 
-
-export const SlideMenu = () => {
+export const SlideMenu = (props: iSlideMenuProps) => {
+    const { onClick } = props;
     const [isOpen, setIsOpen] = useState(false);
     const [activeTab, setActiveTab] = useState(0);
 
-    const handleClick = (tab: number) => {
+    // const handleClick = (tab: number) => {
 
-    }
+    // }
 
     return (
         <div className={classes.navContainer}>

@@ -4,8 +4,9 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    // border-right: 1px solid $border-color;
     background-color: $medium-bg-color;
+    z-index: 100;
+    @include absolute-left;
 }
 
 .navScrollArea {

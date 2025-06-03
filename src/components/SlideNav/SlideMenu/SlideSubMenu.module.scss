@@ -1,11 +1,20 @@
 @use '../../../mixin' as *;
 
+.finance {
+    background: linear-gradient(135deg, #03F43B, #0ABF2D);
+    z-index: 90;
+}
+
+.technology {
+    background: linear-gradient(135deg, #0343F4, #0A3CBF);
+    z-index: 80;
+}
+
 .navContainer {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    // border-right: 1px solid $border-color;
-    background-color: $medium-bg-color;
+    @include absolute-left;
 }
 
 .navScrollArea {
@@ -34,7 +43,7 @@
 .navLinkChild {
     font-weight: 500 !important;
     padding: var(--mantine-spacing-xs) var(--mantine-spacing-md) !important;
-    color: $link-color !important;
+    color: black !important;
 
     &:hover {
         background-color: $link-hover-bg-color !important;
